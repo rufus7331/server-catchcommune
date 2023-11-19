@@ -1,5 +1,5 @@
 
-# Nazwa kursu
+# Testowanie i Jakość Oprogramowania (Projekt)
 
 **Autor:** Hubert Pochroń 34319
 
