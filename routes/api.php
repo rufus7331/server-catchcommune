@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+//TODO: Add auth middleware to all routes
+//TODO: use eloquent-resources
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

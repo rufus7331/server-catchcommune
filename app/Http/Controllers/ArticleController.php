@@ -17,7 +17,6 @@ class ArticleController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            // inne reguły walidacji...
         ]);
 
         $article = $request->user()->articles()->create($validatedData);

@@ -24,8 +24,6 @@ class RegisterController extends Controller
             'password' => Hash::make($validatedData['password']),
         ]);
 
-//        return response()->json(['message' => 'User successfully registered', 'user' => $user]);
         return response()->json(['message' => 'User successfully registered'], 201);
     }
 }
-
