@@ -14,12 +14,15 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'content' => ['required'],
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            // inne reguły walidacji...
         ]);
 
-        return Article::create($request->validated());
+        $article = $request->user()->articles()->create($validatedData);
+
+        return response()->json($article, 201);
     }
 
     public function show(Article $article)

@@ -13,8 +13,14 @@ class CatchEntryFactory extends Factory
     public function definition()
     {
         return [
-            'weight' => $this->faker->randomFloat(),
-            'length' => $this->faker->randomFloat(),
+            'fishing_spot_id' => function () {
+                return \App\Models\FishingSpot::factory()->create()->id;
+            },
+            'fish_id' => function () {
+                return \App\Models\Fish::factory()->create()->id;
+            },
+            'weight' => $this->faker->randomFloat(2, 0.1, 100),
+            'length' => $this->faker->randomFloat(2, 1, 200),
             'comment' => $this->faker->word(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
