@@ -16,7 +16,6 @@ class WeatherForecast extends Model
         'temperature',
         'wind_speed',
         'precipitation',
-        // Dodaj inne pola, jeśli są potrzebne
     ];
 
     public function fishingSpot() {
