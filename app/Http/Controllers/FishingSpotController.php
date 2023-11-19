@@ -9,18 +9,21 @@ class FishingSpotController extends Controller
 {
     public function index()
     {
-        return FishingSpot::all();
+        $fishingSpots = FishingSpot::all();
+        return response()->json($fishingSpots);
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required'],
             'latitude' => ['required', 'numeric'],
             'longitude' => ['required', 'numeric'],
         ]);
 
-        return FishingSpot::create($request->validated());
+        $fishingspot = FishingSpot::create($data);
+
+        return response()->json($fishingspot, 201);
     }
 
     public function show(FishingSpot $fishingSpot)

@@ -1,77 +1,62 @@
-# Laravel
 
-## How to run project with sail
-- install sail with composer
-- run `./vendor/bin/sail up -d`
-- run `./vendor/bin/sail artisan migrate`
-- run `./vendor/bin/sail artisan db:seed`
-- run `./vendor/bin/sail artisan test`
-- run `./vendor/bin/sail artisan migrate:fresh --seed`
-- run `./vendor/bin/sail artisan migrate:fresh --seed`
-- run `./vendor/bin/sail artisan migrate:fresh --seed
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Testowanie i Jakość Oprogramowania (Projekt)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Autor:** Hubert Pochroń 34319
 
-## About Laravel
+## Temat projektu
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+CatchCommune
+###### Platforma cyfrowa dla wędkarzy - testowanie aplikacji webowej
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Opis projektu
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+CatchCommune to platforma cyfrowa stworzona z myślą o pasjonatach wędkarstwa. Celem projektu jest zapewnienie wędkarzom narzędzia do łatwego zarządzania ich łowiskami, dokumentowania udanych połowów oraz dzielenia się swoimi doświadczeniami z rosnącą społecznością miłośników wędkarstwa. Wykorzystując interaktywną mapę, użytkownicy mogą wybierać łowiska, sprawdzać aktualne warunki pogodowe i dzielić się zdjęciami swoich zdobyczy. Platforma oferuje również bogatą bazę wiedzy, w której użytkownicy mogą znajdować i publikować artykuły, recenzje sprzętu i porady dotyczące wędkarstwa.
 
-## Learning Laravel
+### Kluczowe funkcjonalności:
+- Interaktywna Mapa Łowisk: Umożliwia użytkownikom wybór i oznaczanie ulubionych miejsc połowu, zapewniając szczegółowe informacje i opinie innych użytkowników.
+- Moduł Pogodowy: Integruje prognozę pogody, pozwalając wędkarzom planować swoje wyprawy z większą pewnością.
+- Dziennik Połowów: Pozwala na zapisywanie informacji o połowach, w tym gatunku ryb, wadze, długości oraz dołączaniu zdjęć.
+- Społeczność: Forum społecznościowe, w którym wędkarze mogą wymieniać się doświadczeniami, poradami i dyskutować na tematy związane z wędkarstwem.
+- Rankingi i Statystyki: Prezentuje najlepsze zdobycze oraz statystyki dotyczące różnych gatunków ryb i łowisk.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Uruchomienie projektu
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-  `composer install`
+-  `./vendor/bin/sail up -d`
+-  `./vendor/bin/sail artisan migrate`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Uruchomienie testów jednostkowych i integracyjnych
 
-## Laravel Sponsors
+-  `./vendor/bin/sail test`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+[//]: # (## Dokumentacja API)
 
-### Premium Partners
+## Scenariusze testowe dla testera manualnego
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+| ID | **Nazwa testu**            | **Cel testu**                                             | **Kroki testowe**                                                             | **Oczekiwany rezultat**                                                               |
+|----|----------------------------|-----------------------------------------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| 1  | Test Rejestracji Użytkownika | Sprawdzić, czy endpoint rejestracji tworzy nowego użytkownika. | Użycie metody POST do wysłania żądania do endpointu rejestracji z wymaganymi danymi. | Sprawdzenie, czy odpowiedź zawiera potwierdzenie utworzenia konta i odpowiedni status HTTP. |
+| 2  | Test Logowania Użytkownika | Zweryfikować, czy endpoint logowania działa poprawnie.    | Wysłanie danych logowania do endpointu logowania przy użyciu metody POST.     | Sprawdzenie, czy w odpowiedzi otrzymano token uwierzytelniający.                      |
+| 3  | Dodawanie Nowego Łowiska   | Testować, czy można dodać nowe łowisko przez API.         | Wysłanie żądania POST z danymi nowego łowiska do odpowiedniego endpointu.     | Sprawdzenie, czy odpowiedź serwera zawiera dane dodanego łowiska oraz status 201 Created. |
+| 4  |Aktualizacja Informacji o Łowisku|Sprawdzić, czy API pozwala na aktualizację danych łowiska.|Użycie metody PUT/PATCH z nowymi danymi łowiska na odpowiednim endpoint.|Sprawdzenie, czy odpowiedź serwera potwierdza zmiany.|
+| 5  |Usuwanie Łowiska|Sprawdzić, czy API pozwala na usunięcie łowiska.|Wysłanie żądania DELETE do endpointu odpowiedzialnego za usuwanie łowiska.|Sprawdzenie, czy odpowiedź serwera zawiera potwierdzenie usunięcia i status 200 OK lub 204 No Content.|
+| 6  |Dodawanie Zdjęć Zdobyczy|Testowanie funkcjonalności dodawania zdjęć zdobyczy przez API.|Wysłanie żądania POST z obrazem i dodatkowymi danymi do odpowiedniego endpointu.|Sprawdzenie, czy odpowiedź serwera zawiera szczegóły dodanego zdjęcia i status 201 Created.|
+| 7  |Pobieranie Listy Łowisk|Zweryfikować, czy API zwraca pełną listę dostępnych łowisk.|Wysłanie żądania GET do endpointu listy łowisk.|Sprawdzenie, czy odpowiedź zawiera listę łowisk i status 200 OK.|
+| 8  |Wyszukiwanie Łowisk|Cel: Testowanie funkcjonalności wyszukiwania łowisk.|Wysłanie żądania GET z parametrami wyszukiwania do odpowiedniego endpointu.|Sprawdzenie, czy odpowiedź zawiera wyniki zgodne z kryteriami wyszukiwania.|
+| 9  |Dodawanie Komentarzy do Łowiska|Sprawdzić, czy użytkownicy mogą dodawać komentarze do łowisk.|Wysłanie żądania POST z komentarzem do odpowiedniego endpointu.|Sprawdzenie, czy odpowiedź zawiera dodany komentarz i status 201 Created.|
+| 10 |Zarządzanie Uprawnieniami Użytkownika|Sprawdzić, czy API pozwala na zmianę uprawnień użytkownika.|Wysłanie żądania PUT/PATCH do zmiany roli lub uprawnień użytkownika.|Sprawdzenie, czy odpowiedź potwierdza zmianę uprawnień.|
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Technologie użyte w projekcie
 
-## Code of Conduct
+- PHP 8.1
+- Laravel 10.32
+- Laravel Sail 1.18
+- Laravel Sanctum 3.3
+- PHPUnit 10.1
+- MYSQL 8.0
+- Docker 24.0.6
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
+## Licencja
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
