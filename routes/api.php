@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CatchEntryController;
+use App\Http\Controllers\FishingSpotController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +22,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/fishing-spots', [FishingSpotController::class, 'store']);
+Route::get('/fishing-spots', [FishingSpotController::class, 'index']);
+Route::apiResource('catch-entries', CatchEntryController::class);
+Route::post('/articles', [ArticleController::class, 'store'])->middleware('auth:sanctum');
+
+
+
