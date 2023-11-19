@@ -21,7 +21,6 @@ class ArticleCreationTest extends TestCase
         $articleData = [
             'title' => 'The Secrets of Successful Fishing',
             'content' => 'Content of the article...',
-            // inne wymagane pola...
         ];
 
         // Wysłanie żądania dodania artykułu
@@ -31,7 +30,6 @@ class ArticleCreationTest extends TestCase
         $response->assertStatus(201);
         $response->assertJsonFragment([
             'title' => 'The Secrets of Successful Fishing',
-            // Sprawdzenie innych pól...
         ]);
         $this->assertDatabaseHas('articles', ['title' => 'The Secrets of Successful Fishing']);
     }

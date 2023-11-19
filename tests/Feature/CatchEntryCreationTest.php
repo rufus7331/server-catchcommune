@@ -31,7 +31,6 @@ class CatchEntryCreationTest extends TestCase
             'fish_id' => $fish->id,
             'weight' => 5.5,
             'length' => 25.0,
-            // inne wymagane pola
         ];
 
         // Wysłanie żądania

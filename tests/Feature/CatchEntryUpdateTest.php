@@ -14,7 +14,6 @@ class CatchEntryUpdateTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    /** @test */
     public function user_can_update_a_catch_entry()
     {
         // Tworzenie i logowanie użytkownika
@@ -30,14 +29,12 @@ class CatchEntryUpdateTest extends TestCase
             'user_id' => $user->id,
             'fishing_spot_id' => $fishingSpot->id,
             'fish_id' => $fish->id,
-            // inne wymagane pola
         ]);
 
         // Dane do aktualizacji
         $updatedData = [
-            'weight' => 6.5, // Zaktualizowane dane
+            'weight' => 6.5,
             'length' => 30.0,
-            // inne wymagane pola
         ];
 
         // Wysłanie żądania aktualizacji

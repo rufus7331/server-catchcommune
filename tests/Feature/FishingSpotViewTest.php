@@ -26,7 +26,7 @@ class FishingSpotViewTest extends TestCase
 
         // Sprawdzenie odpowiedzi
         $response->assertStatus(200);
-        $response->assertJsonCount(3); // Zakładając, że używasz struktury odpowiedzi z kluczem 'data'
+        $response->assertJsonCount(3);
 
     }
 }
