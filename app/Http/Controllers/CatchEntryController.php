@@ -14,13 +14,18 @@ class CatchEntryController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'weight' => ['required', 'numeric'],
-            'length' => ['required', 'numeric'],
-            'comment' => ['nullable'],
+        $validatedData = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'fishing_spot_id' => 'required|exists:fishing_spots,id',
+            'fish_id' => 'required|exists:fish,id',
+            'weight' => 'required|numeric',
+            'length' => 'required|numeric',
+            'comment' => 'nullable|string',
         ]);
 
-        return CatchEntry::create($request->validated());
+        $catchEntry = CatchEntry::create($validatedData);
+
+        return response()->json($catchEntry, 201);
     }
 
     public function show(CatchEntry $catchEntry)
@@ -30,21 +35,21 @@ class CatchEntryController extends Controller
 
     public function update(Request $request, CatchEntry $catchEntry)
     {
-        $request->validate([
-            'weight' => ['required', 'numeric'],
-            'length' => ['required', 'numeric'],
-            'comment' => ['nullable'],
+        $validatedData = $request->validate([
+            'weight' => 'required|numeric',
+            'length' => 'required|numeric',
+            'comment' => 'nullable|string',
         ]);
 
-        $catchEntry->update($request->validated());
+        $catchEntry->update($validatedData);
 
-        return $catchEntry;
+        return response()->json($catchEntry, 200);
     }
 
     public function destroy(CatchEntry $catchEntry)
     {
         $catchEntry->delete();
 
-        return response()->json();
+        return response()->json(null, 204);
     }
 }

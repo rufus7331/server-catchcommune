@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CatchEntry extends Model
 {
@@ -18,15 +19,18 @@ class CatchEntry extends Model
         'comment',
     ];
 
-    public function user() {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function fishingSpot() {
+    public function fishingSpot(): BelongsTo
+    {
         return $this->belongsTo(FishingSpot::class);
     }
 
-    public function fish() {
+    public function fish(): BelongsTo
+    {
         return $this->belongsTo(Fish::class);
     }
 }
