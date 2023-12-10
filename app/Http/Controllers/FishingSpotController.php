@@ -9,8 +9,7 @@ class FishingSpotController extends Controller
 {
     public function index()
     {
-        $fishingSpots = FishingSpot::all();
-        return response()->json($fishingSpots);
+        return inertia('FishingSpots', ['fishingSpots' => FishingSpot::all()]);
     }
 
     public function store(Request $request)
