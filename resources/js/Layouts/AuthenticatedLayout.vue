@@ -35,6 +35,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('fishing-spots')" :active="route().current('fishing-spots')">
                                     Fishing Spots
                                 </NavLink>
+                                <NavLink :href="route('articles')" :active="route().current('articles')">
+                                    Articles
+                                </NavLink>
                             </div>
                         </div>
 

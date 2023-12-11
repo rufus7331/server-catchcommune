@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FishingSpotController;
 use App\Http\Controllers\ProfileController;
 use App\Models\FishingSpot;
@@ -37,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/fishing-spots', [FishingSpotController::class, 'index'])->name('fishing-spots');
     Route::get('/fishing-spots/{id}', [FishingSpotController::class, 'show'])->name('fishing-spots.show');
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+    Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
+    Route::post('/articles/{id}/comments', [CommentController::class, 'store'])->name('articles.comments.store');
 });
 
 require __DIR__.'/auth.php';

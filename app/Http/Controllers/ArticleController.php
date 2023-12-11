@@ -9,7 +9,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        return Article::all();
+        $articles = Article::with('user')->get();
+
+        return inertia('Articles', ['articles' => $articles]);
     }
 
     public function store(Request $request)
@@ -24,9 +26,11 @@ class ArticleController extends Controller
         return response()->json($article, 201);
     }
 
-    public function show(Article $article)
+    public function show($id)
     {
-        return $article;
+        $article = Article::with('user', 'comments')->findOrFail($id);
+
+        return inertia('ArticleDetails', ['article' => $article]);
     }
 
     public function update(Request $request, Article $article)
