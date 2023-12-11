@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CommentController extends Controller
 {
@@ -12,14 +14,23 @@ class CommentController extends Controller
         return Comment::all();
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Article $article)
     {
         $request->validate([
-            'body' => ['required'],
+            'body' => 'required|string|max:255',
         ]);
 
-        return Comment::create($request->validated());
+        $comment = new Comment([
+            'user_id' => auth()->id(),
+            'body' => $request->input('body'),
+            'article_id' => $request->input('article_id'),
+        ]);
+
+        $comment->save();
+
+        return Inertia::location(route('articles.show', $request->input('article_id')));
     }
+
 
     public function show(Comment $comment)
     {

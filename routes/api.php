@@ -31,4 +31,3 @@ Route::apiResource('catch-entries', CatchEntryController::class);
 Route::post('/articles', [ArticleController::class, 'store'])->middleware('auth:sanctum');
 
 
-
