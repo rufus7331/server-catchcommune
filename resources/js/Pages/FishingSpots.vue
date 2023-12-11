@@ -1,15 +1,15 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import {Head, Link} from '@inertiajs/vue3';
 
-import { usePage} from "@inertiajs/vue3";
+import {usePage} from "@inertiajs/vue3";
 
-const { data: fishingSpots } = usePage().props;
+const {fishingSpots} = usePage().props;
 
 </script>
 
 <template>
-    <Head title="FishingSpots" />
+    <Head title="FishingSpots"/>
 
     <AuthenticatedLayout>
         <template #header>
@@ -22,14 +22,16 @@ const { data: fishingSpots } = usePage().props;
                     <div class="p-6 text-gray-900">
                         <h1>Lista łowisk</h1>
                         <ul>
-                            <li v-for="fishingSpot in $page.props.fishingSpots" :key="fishingSpot.id">
-                               <div class="p-6">
-                                   <strong>Nazwa:</strong> {{ fishingSpot.name }}<br>
-                                   <strong>Szerokość geograficzna:</strong> {{ fishingSpot.latitude }}<br>
-                                   <strong>Długość geograficzna:</strong> {{ fishingSpot.longitude }}<br>
-                                   <strong>Data utworzenia:</strong> {{ fishingSpot.created_at }}<br>
-                                   <strong>Data aktualizacji:</strong> {{ fishingSpot.updated_at }}<br>
-                               </div>
+                            <li v-for="fishingSpot in fishingSpots" :key="fishingSpot.id">
+                                <div class="p-6">
+                                    <Link :href="route('fishing-spots.show', { id: fishingSpot.id })">
+                                        <div class="p-6">
+                                            <strong>Nazwa:</strong> {{ fishingSpot.name }}<br>
+                                            <strong>Szerokość geograficzna:</strong> {{ fishingSpot.latitude }}<br>
+                                            <strong>Długość geograficzna:</strong> {{ fishingSpot.longitude }}<br>
+                                        </div>
+                                    </Link>
+                                </div>
                             </li>
                         </ul>
                     </div>
