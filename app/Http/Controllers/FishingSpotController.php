@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\FishingSpot;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\In;
+use Inertia\Inertia;
 
 class FishingSpotController extends Controller
 {
     public function index()
     {
-        $fishingSpots = FishingSpot::all();
-        return response()->json($fishingSpots);
+        return inertia('FishingSpots', ['fishingSpots' => FishingSpot::all()]);
     }
 
     public function store(Request $request)
@@ -26,10 +27,11 @@ class FishingSpotController extends Controller
         return response()->json($fishingspot, 201);
     }
 
-    public function show(FishingSpot $fishingSpot)
+    public function show($id)
     {
-        return $fishingSpot;
+        return inertia('FishingSpotDetails', ['fishingSpot' => FishingSpot::find($id)]);
     }
+
 
     public function update(Request $request, FishingSpot $fishingSpot)
     {

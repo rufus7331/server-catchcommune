@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FishingSpotController;
 use App\Http\Controllers\ProfileController;
+use App\Models\FishingSpot;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/fishing-spots', [FishingSpotController::class, 'index'])->name('fishing-spots');
+    Route::get('/fishing-spots/{id}', [FishingSpotController::class, 'show'])->name('fishing-spots.show');
 });
 
 require __DIR__.'/auth.php';
