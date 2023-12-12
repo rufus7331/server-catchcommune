@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
     Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
     Route::post('/articles/{id}/comments', [CommentController::class, 'store'])->name('articles.comments.store');
+    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/article/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
 
 require __DIR__.'/auth.php';

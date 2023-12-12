@@ -20,7 +20,11 @@ const {articles} = usePage().props;
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        <h1>Artykuły</h1>
+                        <Link :href="route('articles.create')">
+                            <div class="p-6">
+                                <strong>Dodaj artykuł</strong>
+                            </div>
+                        </Link>
                         <table class="min-w-full">
                             <thead>
                             <tr>

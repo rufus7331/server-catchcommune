@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -12,6 +13,11 @@ class ArticleController extends Controller
         $articles = Article::with('user')->get();
 
         return inertia('Articles', ['articles' => $articles]);
+    }
+
+    public function create()
+    {
+        return inertia('ArticleCreate');
     }
 
     public function store(Request $request)
@@ -23,7 +29,7 @@ class ArticleController extends Controller
 
         $article = $request->user()->articles()->create($validatedData);
 
-        return response()->json($article, 201);
+        return Inertia::location(route('articles'));
     }
 
     public function show($id)
@@ -45,10 +51,12 @@ class ArticleController extends Controller
         return $article;
     }
 
-    public function destroy(Article $article)
+    public function destroy($id)
     {
+        $article = Article::findOrFail($id);
+
         $article->delete();
 
-        return response()->json();
+        return Inertia::location(route('articles'));
     }
 }

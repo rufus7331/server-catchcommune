@@ -1,8 +1,9 @@
 <script setup>
-import { Head, usePage } from "@inertiajs/vue3";
+import {Head, Link, usePage} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { useForm } from '@inertiajs/vue3';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import DangerButton from "@/Components/DangerButton.vue";
 
 const { article } = usePage().props;
 const { data: comments } = usePage().props.article.comments;
@@ -23,6 +24,15 @@ const addComment = () => {
         },
     });
 };
+
+const deleteArticle = () => {
+    form.delete(route("articles.destroy", article.id), {
+        preserveScroll: true,
+        onSuccess: (response) => {
+            console.log(response);
+        },
+    });
+};
 </script>
 
 
@@ -31,20 +41,27 @@ const addComment = () => {
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">szczegóły artykułu</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ article.title }}</h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-<!--                        {{ article }}-->
                         <div>
-                            <h1>{{ article.title }}</h1>
                             <p><strong>Autor:</strong> {{ article.user.name }}</p>
                             <p><strong>Data utworzenia:</strong> {{ article.created_at }}</p>
                             <p>{{ article.content }}</p>
                         </div>
+                        <DangerButton
+                            v-if="user && user.id === article.user_id"
+                            class="mt-4"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                            @click="deleteArticle"
+                        >
+                            Delete Article
+                        </DangerButton>
                     </div>
                 </div>
 

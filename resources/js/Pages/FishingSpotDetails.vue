@@ -6,7 +6,7 @@ const {fishingSpot} = usePage().props;
 </script>
 
 <template>
-    <Head title="FishingSpots"/>
+    <Head title="FishingSpotDetails"/>
 
     <AuthenticatedLayout>
         <template #header>
