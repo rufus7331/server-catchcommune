@@ -1,12 +1,11 @@
 <script setup>
-import {Head, Link, usePage} from "@inertiajs/vue3";
+import {Head, useForm, usePage} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { useForm } from '@inertiajs/vue3';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
 
-const { article } = usePage().props;
-const { data: comments } = usePage().props.article.comments;
+const {article} = usePage().props;
+const {data: comments} = usePage().props.article.comments;
 const user = usePage().props.auth.user;
 
 const form = useForm({
@@ -71,12 +70,12 @@ const deleteArticle = () => {
                         <form @submit.prevent="addComment" class="mt-6 space-y-6">
                             <div>
                                 <input type="hidden" name="article_id" :value="article.id">
-                <textarea
-                    v-model="form.body"
-                    class="block w-full p-2 border rounded-md"
-                    rows="4"
-                    placeholder="Treść komentarza"
-                ></textarea>
+                                <textarea
+                                    v-model="form.body"
+                                    class="block w-full p-2 border rounded-md"
+                                    rows="4"
+                                    placeholder="Treść komentarza"
+                                ></textarea>
                             </div>
                             <div class="flex items-center gap-4">
                                 <PrimaryButton :disabled="form.processing">Dodaj komentarz</PrimaryButton>
@@ -91,7 +90,7 @@ const deleteArticle = () => {
                         <ul>
                             <li v-for="comment in article.comments" :key="comment.id">
                                 <div>
-                                    <p><strong>Autor id: {{ comment.user_id}}</strong></p>
+                                    <p><strong>Autor id: {{ comment.user_id }}</strong></p>
                                     <p>{{ comment.body }}</p>
                                     <p>Data dodania: {{ comment.created_at }}</p>
                                 </div>

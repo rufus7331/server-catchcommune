@@ -1,12 +1,11 @@
 <script setup>
-import { Head, usePage } from "@inertiajs/vue3";
+import {Head, useForm, usePage} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { useForm } from '@inertiajs/vue3';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 
-const { article } = usePage().props;
+const {article} = usePage().props;
 const user = usePage().props.auth.user;
 
 const form = useForm({
@@ -17,9 +16,6 @@ const form = useForm({
 const addArticle = () => {
     form.post(route("articles.store"), {
         preserveScroll: true,
-        onSuccess: (response) => {
-            form.reset("content");
-        },
     });
 };
 </script>
