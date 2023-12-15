@@ -9,8 +9,7 @@ class FishingSpotController extends Controller
 {
     public function index()
     {
-        $fishingSpots = FishingSpot::all();
-        return response()->json($fishingSpots);
+        return inertia('FishingSpots', ['fishingSpots' => FishingSpot::all()]);
     }
 
     public function store(Request $request)
@@ -26,10 +25,13 @@ class FishingSpotController extends Controller
         return response()->json($fishingspot, 201);
     }
 
-    public function show(FishingSpot $fishingSpot)
+    public function show($id)
     {
-        return $fishingSpot;
+        $catchEntries = FishingSpot::find($id)->catchEntries()->with('fish', 'user')->get();
+
+        return inertia('FishingSpotDetails', ['fishingSpot' => FishingSpot::find($id), 'catchEntries' => $catchEntries]);
     }
+
 
     public function update(Request $request, FishingSpot $fishingSpot)
     {

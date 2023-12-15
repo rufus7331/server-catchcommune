@@ -23,14 +23,10 @@ class ArticleCreationTest extends TestCase
             'content' => 'Content of the article...',
         ];
 
-        // Wysłanie żądania dodania artykułu
-        $response = $this->postJson('/api/articles', $articleData);
+        // Tworzenie artykułu
+        $response = $this->post(route('articles.store'), $articleData);
 
-        // Sprawdzenie odpowiedzi
-        $response->assertStatus(201);
-        $response->assertJsonFragment([
-            'title' => 'The Secrets of Successful Fishing',
-        ]);
-        $this->assertDatabaseHas('articles', ['title' => 'The Secrets of Successful Fishing']);
+        // Sprawdzanie czy artykuł został utworzony
+        $this->assertDatabaseHas('articles', $articleData);
     }
 }

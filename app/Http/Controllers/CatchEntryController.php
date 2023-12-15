@@ -3,13 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\CatchEntry;
+use App\Models\Fish;
+use App\Models\FishingSpot;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CatchEntryController extends Controller
 {
     public function index()
     {
-        return CatchEntry::all();
+        $entries = CatchEntry::with('user', 'fish', 'fishingSpot')->get();
+
+        return inertia('CatchEntries', ['entries' => $entries]);
+    }
+
+    public function create()
+    {
+        $fish = Fish::all();
+        $fishingSpot = FishingSpot::all();
+
+        return inertia('CreateEntry', ['fish' => $fish, 'fishingSpot' => $fishingSpot]);
     }
 
     public function store(Request $request)
@@ -25,7 +38,7 @@ class CatchEntryController extends Controller
 
         $catchEntry = CatchEntry::create($validatedData);
 
-        return response()->json($catchEntry, 201);
+        return Inertia::location(route('catch-entries'));
     }
 
     public function show(CatchEntry $catchEntry)

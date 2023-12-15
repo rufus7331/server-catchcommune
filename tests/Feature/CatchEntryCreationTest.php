@@ -33,11 +33,10 @@ class CatchEntryCreationTest extends TestCase
             'length' => 25.0,
         ];
 
-        // Wysłanie żądania
-        $response = $this->postJson('/api/catch-entries', $catchEntryData);
+        // Tworzenie zdobyczy
+        $response = $this->post(route('catch-entries.store'), $catchEntryData);
 
-        // Sprawdzenie odpowiedzi
-        $response->assertStatus(201);
-        $this->assertDatabaseHas('catch_entries', ['weight' => 5.5]);
+        // Sprawdzanie czy zdobycz została utworzona
+        $this->assertDatabaseHas('catch_entries', $catchEntryData);
     }
 }
