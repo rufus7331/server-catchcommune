@@ -14,7 +14,7 @@ const form = useForm({
 const addComment = () => {
     form.post(route("articles.comments.store", article.id), {
         preserveScroll: true,
-        onSuccess: (response) => {
+        onSuccess: () => {
             form.reset("body");
         },
     });
