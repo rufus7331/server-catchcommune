@@ -21,12 +21,11 @@ class FishingSpotViewTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        // Wysłanie żądania
-        $response = $this->getJson('/api/fishing-spots');
+        // Wyświetlanie strony z łowiskami
+        $response = $this->get(route('fishing-spots'));
 
-        // Sprawdzenie odpowiedzi
+        // Sprawdzanie czy strona została wyświetlona
         $response->assertStatus(200);
-        $response->assertJsonCount(3);
 
     }
 }

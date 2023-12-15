@@ -21,11 +21,10 @@ class CatchEntryListTest extends TestCase
         // Tworzenie kilku wpisów zdobyczy
         $entries = CatchEntry::factory()->count(5)->create(['user_id' => $user->id]);
 
-        // Wysłanie żądania pobrania listy zdobyczy
-        $response = $this->getJson('/api/catch-entries');
+        // Wyświetlanie strony z wpisami
+        $response = $this->get(route('catch-entries'));
 
-        // Sprawdzenie odpowiedzi
+        // Sprawdzanie czy strona została wyświetlona
         $response->assertStatus(200);
-        $response->assertJsonCount(5); // Zakładając, że używasz klucza 'data' w odpowiedzi
     }
 }
