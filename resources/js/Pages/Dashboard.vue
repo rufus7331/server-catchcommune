@@ -1,13 +1,13 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-import { usePage } from "@inertiajs/vue3";
+import {Head, usePage} from '@inertiajs/vue3';
 
-const { user } = usePage().props.auth;
+const {user} = usePage().props.auth;
+const {recentEntries} = usePage().props;
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Dashboard"/>
 
     <AuthenticatedLayout>
         <template #header>
@@ -17,7 +17,24 @@ const { user } = usePage().props.auth;
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">Welcome back {{user.name}}</div>
+                    <div class="p-6 text-gray-900">
+                        Welcome back {{ user.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-6">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">
+                        <h2>Ostatnie 5 złowionych ryb</h2>
+                        <ul>
+                            <li v-for="entry in recentEntries" :key="entry.id">
+                                {{ entry.fish.name }} - Waga: {{ entry.weight }} kg, Długość: {{ entry.length }} cm
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CatchEntryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FishingSpotController;
 use App\Http\Controllers\ProfileController;
-use App\Models\FishingSpot;
+use App\Models\CatchEntry;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,7 +31,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $recentEntries = CatchEntry::with('user', 'fish', 'fishingSpot')->orderBy('created_at', 'desc')->take(5)->get();
+    return Inertia::render('Dashboard', ['recentEntries' => $recentEntries]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -45,6 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
     Route::get('/article/create', [ArticleController::class, 'create'])->name('articles.create');
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+    Route::get('/catch-entries', [CatchEntryController::class, 'index'])->name('catch-entries');
+    Route::post('/catch-entries', [CatchEntryController::class, 'store'])->name('catch-entries.store');
+    Route::get('/fishing-spots/{fishingSpot}/catch-entries/create', [CatchEntryController::class, 'create'])->name('catch-entries.create');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

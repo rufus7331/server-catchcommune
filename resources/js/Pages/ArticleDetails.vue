@@ -5,11 +5,9 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
 
 const {article} = usePage().props;
-const {data: comments} = usePage().props.article.comments;
 const user = usePage().props.auth.user;
-
 const form = useForm({
-    article_id: 1,
+    article_id: article.id,
     body: "",
 });
 
@@ -17,8 +15,6 @@ const addComment = () => {
     form.post(route("articles.comments.store", article.id), {
         preserveScroll: true,
         onSuccess: (response) => {
-            const newComment = response.data;
-            comments.push(newComment);
             form.reset("body");
         },
     });
@@ -37,7 +33,6 @@ const deleteArticle = () => {
 
 <template>
     <Head title="ArticleDetails"/>
-
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ article.title }}</h2>

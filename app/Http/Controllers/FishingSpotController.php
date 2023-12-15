@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\FishingSpot;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\In;
-use Inertia\Inertia;
 
 class FishingSpotController extends Controller
 {
@@ -29,7 +27,9 @@ class FishingSpotController extends Controller
 
     public function show($id)
     {
-        return inertia('FishingSpotDetails', ['fishingSpot' => FishingSpot::find($id)]);
+        $catchEntries = FishingSpot::find($id)->catchEntries()->with('fish', 'user')->get();
+
+        return inertia('FishingSpotDetails', ['fishingSpot' => FishingSpot::find($id), 'catchEntries' => $catchEntries]);
     }
 
 
