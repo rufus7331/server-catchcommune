@@ -1,4 +1,4 @@
-# Nazwa kursu
+# Testowanie i Jakość Oprogramowania (Projekt) & Technologie aplikacji webowych II
 
 **Autor:** Hubert Pochroń 34319
 
