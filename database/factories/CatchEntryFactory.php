@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\CatchEntry;
 use App\Models\Fish;
 use App\Models\FishingSpot;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
@@ -15,6 +16,9 @@ class CatchEntryFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => function () {
+                return User::factory()->create()->id;
+            },
             'fishing_spot_id' => function () {
                 return FishingSpot::factory()->create()->id;
             },
