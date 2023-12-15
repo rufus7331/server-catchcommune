@@ -66,6 +66,7 @@ wiedzy, w której użytkownicy mogą znajdować i publikować artykuły, recenzj
 - Laravel 10.32
 - Laravel Sail 1.18
 - Laravel Sanctum 3.3
+- Laravel Breeze
 - PHPUnit 10.1
 - MYSQL 8.0
 - Docker 24.0.6
