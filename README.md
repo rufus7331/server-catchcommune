@@ -34,6 +34,7 @@ wiedzy, w której użytkownicy mogą znajdować i publikować artykuły, recenzj
 - `sail composer install`
 - `sail npm install`
 - `sail artisan migrate`
+- `sail artisan db:seed`
 
 ## Uruchomienie testów jednostkowych i integracyjnych
 
