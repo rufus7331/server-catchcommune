@@ -30,11 +30,12 @@ wiedzy, w której użytkownicy mogą znajdować i publikować artykuły, recenzj
 ## Uruchomienie projektu
 
 - `alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'`
-- `sail up -d`
 - `sail composer install`
 - `sail npm install`
+- `sail up -d`
 - `sail artisan migrate`
 - `sail artisan db:seed`
+- `sail npm run dev`
 
 ## Uruchomienie testów jednostkowych i integracyjnych
 
