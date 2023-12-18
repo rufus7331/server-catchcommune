@@ -18,6 +18,7 @@ class FishingSpotController extends Controller
             'name' => ['required'],
             'latitude' => ['required', 'numeric'],
             'longitude' => ['required', 'numeric'],
+            'description' => ['required'],
         ]);
 
         $fishingspot = FishingSpot::create($data);

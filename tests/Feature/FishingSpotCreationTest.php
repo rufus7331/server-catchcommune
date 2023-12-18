@@ -22,6 +22,7 @@ class FishingSpotCreationTest extends TestCase
             'name' => 'Lake Paradise',
             'latitude' => 52.123456,
             'longitude' => 21.123456,
+            'description' => 'This is a beautiful lake',
         ];
 
         // Wysłanie żądania
