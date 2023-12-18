@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('name');
             $table->double('latitude');
             $table->double('longitude');
+            $table->string('description');
             $table->timestamps();
         });
     }

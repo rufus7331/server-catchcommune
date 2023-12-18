@@ -16,6 +16,7 @@ class FishingSpotFactory extends Factory
             'name' => $this->faker->name(),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
+            'description' => $this->faker->text(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

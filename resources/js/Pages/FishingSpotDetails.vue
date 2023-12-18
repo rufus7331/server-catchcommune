@@ -12,7 +12,7 @@ const {catchEntries} = usePage().props;
 
         <AuthenticatedLayout>
             <template #header>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Informacje o łowisku</h2>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Fishing Spot Details</h2>
             </template>
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -1,8 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head, Link} from '@inertiajs/vue3';
-
-import {usePage} from "@inertiajs/vue3";
+import {Head, Link, usePage} from '@inertiajs/vue3';
 
 const {articles} = usePage().props;
 
@@ -28,9 +26,15 @@ const {articles} = usePage().props;
                         <table class="min-w-full">
                             <thead>
                             <tr>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Tytuł</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Autor</th>
-                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Data utworzenia</th>
+                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Tytuł
+                                </th>
+                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Autor
+                                </th>
+                                <th class="px-6 py-3 bg-gray-200 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Data utworzenia
+                                </th>
                             </tr>
                             </thead>
                             <tbody>

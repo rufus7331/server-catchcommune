@@ -14,6 +14,7 @@ class FishingSpot extends Model
         'name',
         'latitude',
         'longitude',
+        'description',
     ];
 
     public function weatherForecasts(): HasMany
